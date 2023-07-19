@@ -3,7 +3,7 @@ const parse = require(".");
 
 (async () => {
   const replayBuffer = fs.readFileSync(
-    "UnsavedReplay-2023.07.18-07.26.26.replay"
+    "UnsavedReplay-2023.07.19-13.49.36.replay"
   );
 
   console.time();
