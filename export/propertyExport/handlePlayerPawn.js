@@ -1,8 +1,5 @@
 const tryGetPlayerDataFromPawn = (pawn, states) => {
-  const {
-    players,
-    pawnChannelToStateChannel,
-  } = states;
+  const { players, pawnChannelToStateChannel } = states;
   const stateChannel = pawnChannelToStateChannel[pawn];
 
   if (stateChannel) {
@@ -12,7 +9,13 @@ const tryGetPlayerDataFromPawn = (pawn, states) => {
   return null;
 };
 
-const handlePlayerPawn = ({ chIndex, data, globalData, states, changedProperties }) => {
+const handlePlayerPawn = ({
+  chIndex,
+  data,
+  globalData,
+  states,
+  changedProperties,
+}) => {
   const { actorToChannel } = globalData;
   const { pawnChannelToStateChannel, queuedPlayerPawns, players } = states;
   let playerState;
@@ -34,7 +37,7 @@ const handlePlayerPawn = ({ chIndex, data, globalData, states, changedProperties
 
       playerPawns.push({
         chIndex,
-        playerPawn: data,
+        playerPawn: data, //This holds all the game data for the player (CID, BID, EID, Glider, etc)
         changedProperties,
       });
 
@@ -42,7 +45,6 @@ const handlePlayerPawn = ({ chIndex, data, globalData, states, changedProperties
     }
 
     playerState = players[stateChannelIndex];
-
   } else {
     playerState = tryGetPlayerDataFromPawn(chIndex, states);
 
